@@ -8,7 +8,7 @@
 <div>
     <ul>
         <li>Username: {{ user.username }}</li>
-        <li>Email: {{ user.email }}</li>
+        <li>Email: <span id="user_email">{{ user.email }}</span></li>
     </ul>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Modifier ses informations
@@ -20,19 +20,29 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Modifier ses informations</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <input id="form_email" type="email" name="email" value="{{ user.email }}">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="update_email()">Save changes</button>
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function update_email() {
+        var new_email = $('#form_email').val()
+        $('#user_email').html(new_email)
+        $('#exampleModal').modal('hide')
+    }
+</script>
 {% endblock %}
