@@ -20,5 +20,6 @@ from accounts import views as accountsViews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('api/v1/update_user_email', accountsViews.update_user_email, name='update_user_email'),
     path('', accountsViews.home, name='home'),
 ]

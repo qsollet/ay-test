@@ -40,8 +40,15 @@
 {% block extra_js %}
 <script>
     function update_email() {
+        // Get value of new email
         var new_email = $('#form_email').val()
+        // update the current page
         $('#user_email').html(new_email)
+        // Call api to update the email in the DB
+        $.post('{% url "update_user_email" %}', {'email': new_email}, function (data) {
+            console.log(data)
+        })
+        // Hide the modal
         $('#exampleModal').modal('hide')
     }
 </script>
