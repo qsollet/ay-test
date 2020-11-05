@@ -1,0 +1,5 @@
+.env
+*.pyc
+.vscode
+ay_test/.env
+ay_test/db.sqlite3

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="d-flex justify-content-center mt-5">
+        <div class="p-3 rounded bg-light text-dark">
+            {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+            {% endif %}
+
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+        </div>
+    </div>
+{% endblock %}

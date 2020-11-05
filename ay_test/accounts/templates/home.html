@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Homepage</h1>
+    <p>Visible only when logged in.</p>
+    <a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>
+{% endblock %}
